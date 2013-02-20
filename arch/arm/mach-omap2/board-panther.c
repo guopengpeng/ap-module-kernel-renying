@@ -825,6 +825,10 @@ static struct i2c_board_info __initdata panther_i2c_touchscreen[] = {
 	    .irq = OMAP_GPIO_IRQ(FT5X0X_GPIO_IRQ),
 	    //.platform_data = &ft5x06_platform_date,
        },
+
+	{
+	    I2C_BOARD_INFO("pcf8563", 0x51),
+	},
 };
 /* meikee add end*/
 
