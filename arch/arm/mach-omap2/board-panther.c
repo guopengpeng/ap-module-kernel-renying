@@ -736,6 +736,39 @@ static struct twl4030_codec_data panther_codec_data = {
 };
 
 
+
+
+static uint32_t board_keymap[] = {
+	KEY(0, 0, KEY_BACK),
+	KEY(0, 1, KEY_BACKSPACE),
+	KEY(1, 0, KEY_HOME),
+	KEY(1, 2, KEY_ENTER),
+	KEY(2, 0, KEY_1),
+	KEY(2, 1, KEY_4),
+	KEY(2, 2, KEY_7),
+	KEY(3, 0, KEY_2),
+	KEY(3, 1, KEY_5),
+	KEY(3, 2, KEY_8),
+	KEY(4, 0, KEY_3),
+	KEY(4, 1, KEY_6),
+	KEY(4, 2, KEY_9),
+	KEY(5, 0, KEY_X),
+	KEY(5, 1, KEY_0),
+	KEY(5, 2, KEY_DOT),
+};
+
+static struct matrix_keymap_data board_map_data = {
+	.keymap			= board_keymap,
+	.keymap_size		= ARRAY_SIZE(board_keymap),
+};
+
+static struct twl4030_keypad_data ynws_kp_data = {
+	.keymap_data	= &board_map_data,
+	.rows		= 6,
+	.cols		= 3,
+	.rep		= 1,
+};
+
 static struct twl4030_platform_data panther_twldata = {
 	.irq_base	= TWL4030_IRQ_BASE,
 	.irq_end	= TWL4030_IRQ_END,
@@ -744,6 +777,7 @@ static struct twl4030_platform_data panther_twldata = {
 	.usb		= &panther_usb_data,
 	.gpio		= &panther_gpio_data,
 	.codec		= &panther_codec_data,
+	.keypad		= &ynws_kp_data,
 // The following table shows the relationship of pantherboard's regulators.
 //
 //	[LDO NAME]	[SCHEMATIC SYMBOLE]	[CONNECTED DEVICE (Outer/Inner)]
