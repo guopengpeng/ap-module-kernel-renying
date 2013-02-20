@@ -737,7 +737,6 @@ static struct twl4030_codec_data panther_codec_data = {
 
 
 
-
 static uint32_t board_keymap[] = {
 	KEY(0, 0, KEY_BACK),
 	KEY(0, 1, KEY_BACKSPACE),
@@ -1224,15 +1223,11 @@ static void power_en_init(void)
 {
 
 #define POWERC		 	29
-#define POWERD		 	177
 
 	if (gpio_request(POWERC, "audio enable") < 0)
 		printk(KERN_ERR "can't control powerb\n");
 	gpio_direction_output(POWERC, 1);
 
-	if (gpio_request(POWERD, "audio enable") < 0)
-		printk(KERN_ERR "can't control powerb\n");
-	gpio_direction_output(POWERD, 1);
 }
 
 
