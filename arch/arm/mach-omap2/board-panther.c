@@ -762,6 +762,7 @@ static struct matrix_keymap_data board_map_data = {
 	.keymap_size		= ARRAY_SIZE(board_keymap),
 };
 
+
 static struct twl4030_keypad_data ynws_kp_data = {
 	.keymap_data	= &board_map_data,
 	.rows		= 6,
