@@ -1204,6 +1204,22 @@ static struct omap_musb_board_data musb_board_data = {
 };
 
 
+static void panther_power_off(void)
+{
+#define SYS_PWREN_GPIO	24
+#define POWER_5V_GPIO	172
+
+	if (gpio_request(SYS_PWREN_GPIO, "SYS PWREN") < 0)
+		printk(KERN_ERR "can't enable system power\n");
+	gpio_direction_output(SYS_PWREN_GPIO, 0);
+
+	if (gpio_request(POWER_5V_GPIO, "5V EN") < 0)
+		printk(KERN_ERR "can't enable 5V power\n");
+	gpio_direction_output(POWER_5V_GPIO, 0);
+}
+
+
+
 static void power_en_init(void)
 {
 
@@ -1222,7 +1238,7 @@ static void power_en_init(void)
 
 static void __init panther_init(void)
 {
-	
+	pm_power_off = panther_power_off;
 	omap3_mux_init(board_mux, OMAP_PACKAGE_CBP);
 
 
