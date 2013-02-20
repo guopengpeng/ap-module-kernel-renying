@@ -737,6 +737,7 @@ static struct twl4030_codec_data panther_codec_data = {
 
 
 
+
 static uint32_t board_keymap[] = {
 	KEY(0, 0, KEY_BACK),
 	KEY(0, 1, KEY_BACKSPACE),
